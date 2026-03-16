@@ -62,7 +62,7 @@
     <td align="center">최종 요약, PPT 및 발표 자료 정리</td>
     <td align="center">
       <a href="https://github.com/Hong-Jin-seo">
-        <img src="https://img.shields.io/badge/@Hong-Jin-seo-181717?style=flat-square&logo=github&logoColor=white"/>
+        <img src="https://img.shields.io/badge/@Hong--Jin--seo-181717?style=flat-square&logo=github&logoColor=white"/>
       </a>
     </td>
   </tr>
