@@ -43,8 +43,8 @@
     <td align="center">전승권</td>
     <td align="center">churn_any 분석, 교차검증 및 튜닝</td>
     <td align="center">
-      <a href="https://github.com/ch3477-sudo">
-        <img src="https://img.shields.io/badge/@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
+      <a href="https://github.com/eaent">
+        <img src="https://img.shields.io/badge/@eaent-181717?style=flat-square&logo=github&logoColor=white"/>
       </a>
     </td>
   </tr>
