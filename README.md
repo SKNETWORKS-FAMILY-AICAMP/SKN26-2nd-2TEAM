@@ -122,12 +122,12 @@
 │   └── processed
 │       └── train_df_2020_2025.csv
 ├── images
-│   ├── i1.png
-│   ├── i2.png
-│   ├── i3.png
-│   ├── i4.png
-│   ├── i5.png
-│   └── i6.png
+│   ├── churn-any-distribution.png
+│   ├── churn-to-mvno-distribution.png
+│   ├── logistic-regression-pr-curve.png
+│   ├── telco-transition-heatmap.png
+│   ├── tuned-randomforest-feature-importance.png
+│   └── year-transition-counts.png
 ├── src
 │   └── preprocess_kmp.py
 ├── notebooks
@@ -206,8 +206,8 @@
 아래 그래프는 각 연도 전환 구간별 표본 수와 실제 통신사 이동 구조를 보여준다.
 
 <p align="center">
-  <img src="images/i3.png" alt="연도 전환 구간별 건수" width="48%"/>
-  <img src="images/i4.png" alt="통신사 이동 히트맵" width="48%"/>
+  <img src="images/logistic-regression-pr-curve.png" alt="연도 전환 구간별 건수" width="48%"/>
+  <img src="images/telco-transition-heatmap.png" alt="통신사 이동 히트맵" width="48%"/>
 </p>
 
 ---
@@ -267,8 +267,8 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 두 라벨의 분포 차이는 아래 그림에서 직관적으로 확인할 수 있다.
 
 <p align="center">
-  <img src="images/i1.png" alt="churn_any 분포" width="48%"/>
-  <img src="images/i2.png" alt="churn_to_mvno 분포" width="48%"/>
+  <img src="images/churn-any-distribution.png.png" alt="churn_any 분포" width="48%"/>
+  <img src="images/churn-to-mvno-distribution.png" alt="churn_to_mvno 분포" width="48%"/>
 </p>
 
 ---
@@ -315,7 +315,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 또한 튜닝된 RandomForest의 변수 중요도를 확인했을 때, 스마트폰 구분, 월평균 휴대폰 이용 총 금액, 월평균 기기 할부금, 개인 월평균 소득, 연령대 등이 핵심 예측 신호로 나타났다.
 
 <p align="center">
-  <img src="images/i5.png" alt="튜닝된 랜덤포레스트 중요 변수" width="80%"/>
+  <img src="images/tuned-randomforest-feature-importance.png" alt="튜닝된 랜덤포레스트 중요 변수" width="80%"/>
 </p>
 
 ### 2. churn_to_mvno 분석 결과
@@ -329,7 +329,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 특히 Precision-Recall Curve를 보면, 양성 클래스가 매우 희소한 구조에서 정밀도와 재현율을 동시에 안정적으로 확보하기 어렵다는 점을 확인할 수 있다.
 
 <p align="center">
-  <img src="images/i6.png" alt="Precision-Recall Curve - LogisticRegression" width="80%"/>
+  <img src="images/year-transition-counts.png" alt="Precision-Recall Curve - LogisticRegression" width="80%"/>
 </p>
 
 ---
