@@ -128,8 +128,6 @@
 │   ├── telco-transition-heatmap.png
 │   ├── tuned-randomforest-feature-importance.png
 │   └── year-transition-counts.png
-├── src
-│   └── preprocess_kmp.py
 ├── notebooks
 │   ├── 00_eda_overview.ipynb
 │   ├── 01_preprocessing_check.ipynb
@@ -137,7 +135,12 @@
 │   ├── 03_churn_to_mvno_baseline.ipynb
 │   ├── 04_churn_any_cv_tuning.ipynb
 │   └── 05_final_summary.ipynb
-└── README.md
+├── src
+│   └── preprocess_kmp.py
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ※ 원본 KMP CSV 파일은 용량 문제로 저장소에 포함하지 않았다.
