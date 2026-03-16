@@ -391,24 +391,28 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 ### 김용욱 회고
 
 <table>
+  <colgroup>
+    <col width="110">
+    <col>
+  </colgroup>
   <tr>
-    <th style="width: 90px; white-space: nowrap;">평가자</th>
+    <th><nobr>평가자</nobr></th>
     <th>회고 내용</th>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">윤찬호</td>
+    <td><nobr>윤찬호</nobr></td>
     <td>EDA와 변수 분포 분석을 통해 데이터의 전체 흐름을 이해하는 데 큰 도움을 주셨습니다. 초기 단계에서 주요 변수와 구조를 잘 정리해주셔서 이후 모델 결과를 해석하는 기반이 되었습니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">전승권</td>
+    <td><nobr>전승권</nobr></td>
     <td>EDA와 데이터 전처리를 담당하며 분석 기반을 마련함.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">홍완기</td>
+    <td><nobr>홍완기</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">홍진서</td>
+    <td><nobr>홍진서</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
 </table>
@@ -418,24 +422,28 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 ### 윤찬호 회고
 
 <table>
+  <colgroup>
+    <col width="110">
+    <col>
+  </colgroup>
   <tr>
-    <th style="width: 90px; white-space: nowrap;">평가자</th>
+    <th><nobr>평가자</nobr></th>
     <th>회고 내용</th>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">김용욱</td>
+    <td><nobr>김용욱</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">전승권</td>
+    <td><nobr>전승권</nobr></td>
     <td>프로젝트의 기초 틀을 만들고 노션 기반 정리를 담당함.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">홍완기</td>
+    <td><nobr>홍완기</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">홍진서</td>
+    <td><nobr>홍진서</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
 </table>
@@ -445,24 +453,28 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 ### 전승권 회고
 
 <table>
+  <colgroup>
+    <col width="110">
+    <col>
+  </colgroup>
   <tr>
-    <th style="width: 90px; white-space: nowrap;">평가자</th>
+    <th><nobr>평가자</nobr></th>
     <th>회고 내용</th>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">김용욱</td>
+    <td><nobr>김용욱</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">윤찬호</td>
+    <td><nobr>윤찬호</nobr></td>
     <td>churn_any 분석과 교차검증, 튜닝을 맡아 프로젝트의 핵심 모델 기준을 정리해주셨습니다. 결과 비교에 그치지 않고 안정성과 활용 가능성까지 함께 보여주셨습니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">홍완기</td>
+    <td><nobr>홍완기</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">홍진서</td>
+    <td><nobr>홍진서</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
 </table>
@@ -472,24 +484,28 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 ### 홍완기 회고
 
 <table>
+  <colgroup>
+    <col width="110">
+    <col>
+  </colgroup>
   <tr>
-    <th style="width: 90px; white-space: nowrap;">평가자</th>
+    <th><nobr>평가자</nobr></th>
     <th>회고 내용</th>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">김용욱</td>
+    <td><nobr>김용욱</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">윤찬호</td>
+    <td><nobr>윤찬호</nobr></td>
     <td>희소 라벨인 churn_to_mvno 문제를 맡아 threshold 비교와 한계 해석까지 꼼꼼하게 정리해주셨습니다. 단순 성능 비교를 넘어서 왜 예측이 어려운지도 함께 설명해주셔서 해석의 신뢰도를 높여주셨습니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">전승권</td>
+    <td><nobr>전승권</nobr></td>
     <td>프로젝트 전반을 주도하고 일정 조율을 맡은 PM 역할을 수행함.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">홍진서</td>
+    <td><nobr>홍진서</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
 </table>
@@ -499,24 +515,28 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 ### 홍진서 회고
 
 <table>
+  <colgroup>
+    <col width="110">
+    <col>
+  </colgroup>
   <tr>
-    <th style="width: 90px; white-space: nowrap;">평가자</th>
+    <th><nobr>평가자</nobr></th>
     <th>회고 내용</th>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">김용욱</td>
+    <td><nobr>김용욱</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">윤찬호</td>
+    <td><nobr>윤찬호</nobr></td>
     <td>최종 요약과 PPT 정리를 맡아 각자 진행한 분석 결과를 하나의 흐름으로 잘 연결해주셨습니다. 덕분에 프로젝트 결과가 더 명확하고 전달력 있게 정리될 수 있었습니다.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">전승권</td>
+    <td><nobr>전승권</nobr></td>
     <td>발표자료와 PPT를 체계적으로 정리하고 회의를 주도함.</td>
   </tr>
   <tr>
-    <td style="white-space: nowrap;">홍완기</td>
+    <td><nobr>홍완기</nobr></td>
     <td>여기에 회고 내용을 적어주시면 됩니다.</td>
   </tr>
 </table>
