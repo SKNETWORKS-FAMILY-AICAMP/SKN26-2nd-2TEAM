@@ -15,56 +15,58 @@
 
 ## 팀 소개
 
+## 팀 소개
+
 <table>
   <tr>
     <th align="center">이름</th>
-    <th align="center">GitHub</th>
     <th align="center">역할</th>
+    <th align="center">GitHub</th>
   </tr>
   <tr>
     <td align="center">윤찬호</td>
+    <td align="center">전처리, 전환형 데이터셋 구축, 튜닝</td>
     <td align="center">
       <a href="https://github.com/ch3477-sudo">
         <img src="https://img.shields.io/badge/@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
       </a>
     </td>
-    <td align="center">전처리, 전환형 데이터셋 구축, 튜닝</td>
   </tr>
   <tr>
-    <td align="center">홍완기</td>
+    <td align="center">김용욱</td>
+    <td align="center">EDA 및 변수 해석</td>
     <td align="center">
       <a href="https://github.com/dhksrlghd">
         <img src="https://img.shields.io/badge/@dhksrlghd-181717?style=flat-square&logo=github&logoColor=white"/>
       </a>
     </td>
-    <td align="center">EDA 및 변수 해석</td>
   </tr>
   <tr>
-    <td align="center">홍진서</td>
+    <td align="center">홍완기</td>
+    <td align="center">churn_any baseline 분석</td>
     <td align="center">
       <a href="https://github.com/ch3477-sudo">
         <img src="https://img.shields.io/badge/@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
       </a>
     </td>
-    <td align="center">churn_any baseline 분석</td>
   </tr>
   <tr>
-    <td align="center">김용욱</td>
+    <td align="center">전승권</td>
+    <td align="center">churn_to_mvno 분석</td>
     <td align="center">
       <a href="https://github.com/yonguk12077-beep">
         <img src="https://img.shields.io/badge/@yonguk12077--beep-181717?style=flat-square&logo=github&logoColor=white"/>
       </a>
     </td>
-    <td align="center">churn_to_mvno 분석</td>
   </tr>
   <tr>
-    <td align="center">전승권</td>
+    <td align="center">홍진서</td>
+    <td align="center">최종 요약 및 발표 자료 정리</td>
     <td align="center">
       <a href="https://github.com/ch3477-sudo">
         <img src="https://img.shields.io/badge/@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
       </a>
     </td>
-    <td align="center">최종 요약 및 발표 자료 정리</td>
   </tr>
 </table>
 
