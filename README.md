@@ -206,7 +206,7 @@
 아래 그래프는 각 연도 전환 구간별 표본 수와 실제 통신사 이동 구조를 보여준다.
 
 <p align="center">
-  <img src="images/logistic-regression-pr-curve.png" alt="연도 전환 구간별 건수" width="48%"/>
+  <img src="images/year-transition-counts.png" alt="연도 전환 구간별 건수" width="48%"/>
   <img src="images/telco-transition-heatmap.png" alt="통신사 이동 히트맵" width="48%"/>
 </p>
 
@@ -267,7 +267,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 두 라벨의 분포 차이는 아래 그림에서 직관적으로 확인할 수 있다.
 
 <p align="center">
-  <img src="images/churn-any-distribution.png.png" alt="churn_any 분포" width="48%"/>
+  <img src="images/churn-any-distribution.png" alt="churn_any 분포" width="48%"/>
   <img src="images/churn-to-mvno-distribution.png" alt="churn_to_mvno 분포" width="48%"/>
 </p>
 
@@ -329,7 +329,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 특히 Precision-Recall Curve를 보면, 양성 클래스가 매우 희소한 구조에서 정밀도와 재현율을 동시에 안정적으로 확보하기 어렵다는 점을 확인할 수 있다.
 
 <p align="center">
-  <img src="images/year-transition-counts.png" alt="Precision-Recall Curve - LogisticRegression" width="80%"/>
+  <img src="images/logistic-regression-pr-curve.png" alt="Precision-Recall Curve - LogisticRegression" width="80%"/>
 </p>
 
 ---
