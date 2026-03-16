@@ -15,35 +15,9 @@
 
 ## 팀 소개
 
-<table>
-  <tr>
-    <td align="center" width="20%">
-      <strong>팀원 1</strong><br><br>
-      윤찬호<br>
-      <a href="https://github.com/ch3477-sudo">@ch3477-sudo</a>
-    </td>
-    <td align="center" width="20%">
-      <strong>팀원 2</strong><br><br>
-      홍완기<br>
-      <a href="https://github.com/dhksrlghd">@dhksrlghd</a>
-    </td>
-    <td align="center" width="20%">
-      <strong>팀원 3</strong><br><br>
-      홍진서<br>
-      <a href="https://github.com/ch3477-sudo">@ch3477-sudo</a>
-    </td>
-    <td align="center" width="20%">
-      <strong>팀원 4</strong><br><br>
-      김용욱<br>
-      <a href="https://github.com/yonguk12077-beep">@yonguk12077-beep</a>
-    </td>
-    <td align="center" width="20%">
-      <strong>팀원 5</strong><br><br>
-      전승권<br>
-      <a href="https://github.com/ch3477-sudo">@ch3477-sudo</a>
-    </td>
-  </tr>
-</table>
+| 팀원 1 | 팀원 2 | 팀원 3 | 팀원 4 | 팀원 5 |
+|--------|--------|--------|--------|--------|
+| 이름: 윤찬호<br>GitHub ID:<br>[@ch3477-sudo](https://github.com/ch3477-sudo) | 이름: 홍완기<br>GitHub ID:<br>[@dhksrlghd](https://github.com/dhksrlghd) | 이름: 홍진서<br>GitHub ID:<br>[@ch3477-sudo](https://github.com/ch3477-sudo) | 이름: 김용욱<br>GitHub ID:<br>[@yonguk12077-beep](https://github.com/yonguk12077-beep) | 이름: 전승권<br>GitHub ID:<br>[@ch3477-sudo](https://github.com/ch3477-sudo) |
 
 ---
 
