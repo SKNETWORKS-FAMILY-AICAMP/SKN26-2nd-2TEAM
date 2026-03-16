@@ -19,7 +19,6 @@
 |--------|--------|--------|--------|--------|
 | 이름: 윤찬호<br>GitHub ID: `member1` | 이름: 홍완기<br>GitHub ID: `member2` | 이름: 홍진서<br>GitHub ID: `member3` | 이름: 김용욱<br>GitHub ID: `member4` | 이름: 전승권<br>GitHub ID: `member5` |
 
-
 ---
 
 ## 기술 스택
@@ -39,6 +38,13 @@
 ├── data
 │   └── processed
 │       └── train_df_2020_2025.csv
+├── images
+│   ├── i1.png
+│   ├── i2.png
+│   ├── i3.png
+│   ├── i4.png
+│   ├── i5.png
+│   └── i6.png
 ├── src
 │   └── preprocess_kmp.py
 ├── notebooks
@@ -58,20 +64,23 @@
 - `data/processed/train_df_2020_2025.csv`  
   전처리 완료 후 생성된 최종 학습용 데이터셋
 
+- `images/`  
+  README와 발표 자료에 활용한 주요 시각화 이미지
+
 - `00_eda_overview.ipynb`  
-  데이터 기본 구조 및 라벨/변수 분포 확인
+  데이터 기본 구조 및 라벨·변수 분포 확인
 
 - `01_preprocessing_check.ipynb`  
   전처리 결과 점검 및 전환형 구조 검증
 
 - `02_churn_any_baseline.ipynb`  
-  churn_any baseline 모델 비교
+  `churn_any` baseline 모델 비교
 
 - `03_churn_to_mvno_baseline.ipynb`  
-  churn_to_mvno baseline 모델 비교 및 한계 확인
+  `churn_to_mvno` baseline 모델 비교 및 한계 확인
 
 - `04_churn_any_cv_tuning.ipynb`  
-  churn_any 교차검증 및 RandomForest 튜닝
+  `churn_any` 교차검증 및 RandomForest 튜닝
 
 - `05_final_summary.ipynb`  
   전체 프로젝트 결과 요약 및 최종 정리
@@ -110,6 +119,15 @@
 ### 원본 데이터 안내
 - 원본 KMP CSV 파일은 용량 문제로 본 저장소에 포함하지 않았다.
 - 따라서 `data/raw/` 폴더는 비워두었거나 업로드하지 않은 상태이며, 분석은 별도로 확보한 원본 데이터를 기준으로 진행하였다.
+
+### 전환형 데이터 구조 확인
+전처리 이후 데이터는 단순 단면 자료가 아니라, 동일 개인의 연도 간 이동을 추적할 수 있는 전환형 구조로 구성하였다.  
+아래 그래프는 각 연도 전환 구간별 표본 수와 실제 통신사 이동 구조를 보여준다.
+
+<p align="center">
+  <img src="images/i3.png" alt="연도 전환 구간별 건수" width="48%"/>
+  <img src="images/i4.png" alt="통신사 이동 히트맵" width="48%"/>
+</p>
 
 ---
 
@@ -165,8 +183,12 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 - `churn_to_mvno`는 매우 희소한 이벤트로 클래스 불균형이 큰 문제
 - 따라서 두 문제는 같은 기준으로 해석하면 안 되며, 서로 다른 평가 관점이 필요하다
 
-<img src="images/i1.png" alt="churn_any 분포" width="800"/>
-<img src="images/i2.png" alt="churn_to_mvno 분포" width="800"/>
+두 라벨의 분포 차이는 아래 그림에서 직관적으로 확인할 수 있다.
+
+<p align="center">
+  <img src="images/i1.png" alt="churn_any 분포" width="48%"/>
+  <img src="images/i2.png" alt="churn_to_mvno 분포" width="48%"/>
+</p>
 
 ---
 
@@ -209,7 +231,11 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 - GroupKFold 기준 baseline에서도 `DecisionTree`가 가장 높은 Recall과 F1을 보였다.
 - 튜닝 이후에는 `RandomForest`가 보다 실사용에 가까운 최종 후보 모델로 정리되었다.
 
+또한 튜닝된 RandomForest의 변수 중요도를 확인했을 때, 스마트폰 구분, 월평균 휴대폰 이용 총 금액, 월평균 기기 할부금, 개인 월평균 소득, 연령대 등이 핵심 예측 신호로 나타났다.
 
+<p align="center">
+  <img src="images/i5.png" alt="튜닝된 랜덤포레스트 중요 변수" width="80%"/>
+</p>
 
 ### 2. churn_to_mvno 분석 결과
 `churn_to_mvno`는 전체 데이터 기준 양성 비율이 약 1.25%에 불과한 매우 희소한 문제였다.
@@ -219,7 +245,11 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 - threshold 조정만으로는 성능 한계가 분명했다.
 - 희소 클래스와 변수 정보 한계가 동시에 존재하는 문제임을 확인하였다.
 
+특히 Precision-Recall Curve를 보면, 양성 클래스가 매우 희소한 구조에서 정밀도와 재현율을 동시에 안정적으로 확보하기 어렵다는 점을 확인할 수 있다.
 
+<p align="center">
+  <img src="images/i6.png" alt="Precision-Recall Curve - LogisticRegression" width="80%"/>
+</p>
 
 ---
 
@@ -236,8 +266,6 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 
 즉 고객 이탈은 단순한 통신 이용 행태만으로 설명되지 않고,  
 비용 관련 변수, 단말 및 이용 특성, 개인 배경 특성이 함께 작용하는 문제임을 확인할 수 있었다.
-
-
 
 ---
 
@@ -266,26 +294,14 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 
 ---
 
-## 실행 방법
+## 저장소 안내
 
-### 1. 원본 데이터 준비
-본 프로젝트는 KMP 원본 CSV 파일이 별도로 필요하다.  
-용량 문제로 저장소에는 포함하지 않았으므로, 사용 전 직접 원본 데이터를 준비해야 한다.
+이 저장소는 원본 데이터를 직접 포함하는 재현용 저장소라기보다, 팀프로젝트의 전처리 결과, 분석 노트북, 핵심 시각화, 최종 정리를 함께 확인할 수 있도록 구성한 결과물 저장소에 가깝다.
 
-### 2. 전처리 데이터 생성
-```bash
-python src/preprocess_kmp.py
-```
-
-### 3. 노트북 실행
-전처리된 `train_df_2020_2025.csv`를 기준으로 아래 노트북을 순서대로 실행한다.
-
-- `00_eda_overview.ipynb`
-- `01_preprocessing_check.ipynb`
-- `02_churn_any_baseline.ipynb`
-- `03_churn_to_mvno_baseline.ipynb`
-- `04_churn_any_cv_tuning.ipynb`
-- `05_final_summary.ipynb`
+- `data/processed/`에서는 최종 전처리 데이터셋을 확인할 수 있다.
+- `notebooks/`에서는 전처리 점검, EDA, baseline 비교, 튜닝, 최종 요약 흐름을 순서대로 확인할 수 있다.
+- `images/`에서는 README와 발표 자료에 활용한 핵심 그래프를 바로 확인할 수 있다.
+- 원본 KMP CSV는 용량 문제로 저장소에 포함하지 않았기 때문에, 전체 파이프라인 재현에는 별도 원본 데이터가 필요하다.
 
 ---
 
@@ -298,5 +314,4 @@ python src/preprocess_kmp.py
 반면 `churn_to_mvno`는 매우 희소한 문제로, baseline과 threshold 조정만으로는 실질적인 성능 개선에 한계가 있었다.  
 따라서 이 문제는 희소 클래스 문제의 구조적 난점을 이해하고, 향후 데이터 확장과 불균형 대응 전략이 필요함을 확인했다는 점에서 의미가 있었다.
 
-즉 본 프로젝트의 핵심 성과는 단순 점수 비교가 아니라,  
-통신사 고객 이탈을 비용 관련 변수, 이용 특성, 단말 특성, 개인 배경이 함께 작동하는 문제로 해석 가능한 형태로 정리했다는 데 있다.
+즉 본 프로젝트의 핵심 성과는 단순 점수 비교가 아니라, 통신사 고객 이탈을 비용 관련 변수, 이용 특성, 단말 특성, 개인 배경이 함께 작동하는 문제로 해석 가능한 형태로 정리했다는 데 있다.
