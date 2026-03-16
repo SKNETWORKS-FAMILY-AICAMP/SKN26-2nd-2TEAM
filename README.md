@@ -23,11 +23,45 @@
 
 ## 기술 스택
 
-- Language: Python
-- Data Processing: Pandas, NumPy
-- Visualization: Matplotlib, Seaborn
-- Machine Learning: Scikit-learn, XGBoost
-- Environment: Jupyter Notebook
+<table>
+  <tr>
+    <th>분류</th>
+    <th>기술 스택</th>
+  </tr>
+  <tr>
+    <td><strong>Language</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Data Processing</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+      <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Visualization</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white"/>
+      <img src="https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logo=python&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Machine Learning</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
+      <img src="https://img.shields.io/badge/XGBoost-EC6B23?style=for-the-badge&logo=xgboost&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Environment</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Jupyter-FA0F00?style=for-the-badge&logo=jupyter&logoColor=white"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
