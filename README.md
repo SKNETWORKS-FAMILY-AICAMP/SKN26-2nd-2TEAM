@@ -17,7 +17,7 @@
 
 | 팀원 1 | 팀원 2 | 팀원 3 | 팀원 4 | 팀원 5 |
 |--------|--------|--------|--------|--------|
-| 팀원: 1<br>이름: 홍길동<br>GitHub ID: `member1` | 팀원: 2<br>이름: 홍길동<br>GitHub ID: `member2` | 팀원: 3<br>이름: 홍길동<br>GitHub ID: `member3` | 팀원: 4<br>이름: 홍길동<br>GitHub ID: `member4` | 팀원: 5<br>이름: 홍길동<br>GitHub ID: `member5` |
+| 이름: 윤찬호<br>GitHub ID: `member1` | 이름: 홍완기<br>GitHub ID: `member2` | 이름: 홍진서<br>GitHub ID: `member3` | 이름: 김용욱<br>GitHub ID: `member4` | 이름: 전승권<br>GitHub ID: `member5` |
 
 
 ---
