@@ -1,105 +1,438 @@
 # KMP 기반 통신사 고객 이탈 예측 프로젝트
 
-## 프로젝트 개요
-본 프로젝트는 한국미디어패널(KMP) 2020~2025 데이터를 활용하여 통신사 고객 이탈 가능성을 예측하는 팀프로젝트이다.  
-동일 개인의 연도별 변화를 반영하기 위해 `pid` 기준 transition 기반 long panel 데이터셋을 구축하였고, 다음 두 가지 예측 문제를 정의하여 분석을 진행하였다.
+## 프로젝트 소개
 
-- `churn_any`: 전년 대비 통신사가 변경되었는지 여부
-- `churn_to_mvno`: 메이저 통신사(1/2/3)에서 다음 해 알뜰폰(MVNO=4)으로 이동했는지 여부
+본 프로젝트는 한국미디어패널(KMP) 2020~2025 개인조사 데이터를 활용하여 통신사 고객 이탈 가능성을 예측한 팀 프로젝트이다.
 
-본 프로젝트는 단순 성능 비교를 넘어서, 통신사 이탈과 알뜰폰 이동에 영향을 주는 주요 변수와 해석 가능한 인사이트를 도출하는 것을 목표로 한다.
+동일 개인의 연도별 변화를 반영하기 위해 `pid` 기준의 transition 기반 long panel 데이터를 구축하였고, 다음 두 가지 예측 문제를 중심으로 분석을 진행하였다.
 
----
+- `churn_any`: 전년 대비 이용 통신사가 변경되었는지 여부
+- `churn_to_mvno`: 전년 메이저 통신사(1/2/3) 이용자가 다음 해 알뜰폰(MVNO=4)으로 이동했는지 여부
 
-## 프로젝트 목표
-- 통신사 변경 여부 예측
-- 알뜰폰 이동 여부 예측
-- 고객 이탈 관련 주요 변수 파악
-- baseline 모델과 개선 모델 비교
-- 해석 가능한 인사이트 도출
+본 프로젝트는 단순 성능 비교를 넘어, 통신사 이탈에 영향을 주는 주요 변수와 해석 가능한 인사이트를 도출하는 것을 목표로 하였다.
 
 ---
 
-## 데이터 설명
-- 데이터: KMP 2020~2025 개인조사 CSV (`p20 ~ p25`)
-- 코드북: `P_codebook_v32.xlsx`
-- 분석 단위: `pid`
-- 데이터 구조: transition 기반 long panel
-- 한 행의 의미: `(year_t0=t-1 → year_t1=t)`
+## 팀 소개
 
-### 라벨 정의
-- `churn_any`: 전년 대비 통신사가 변경되면 1, 아니면 0
-- `churn_to_mvno`: 전년 메이저 3사(1/2/3) 이용자가 다음 해 알뜰폰(4)으로 이동하면 1, 아니면 0
+<table>
+  <tr>
+    <th align="center">이름</th>
+    <th align="center">역할</th>
+    <th align="center">GitHub</th>
+  </tr>
+  <tr>
+    <td align="center">윤찬호</td>
+    <td align="center">전처리, 전환형 데이터셋 구축, 분석 흐름 정리 총괄, README 정리</td>
+    <td align="center">
+      <a href="https://github.com/ch3477-sudo">
+        <img src="https://img.shields.io/badge/@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">홍완기</td>
+    <td align="center">churn_to_mvno 분석, threshold 비교, 희소 라벨 한계 해석</td>
+    <td align="center">
+      <a href="https://github.com/dhksrlghd">
+        <img src="https://img.shields.io/badge/@dhksrlghd-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">전승권</td>
+    <td align="center">churn_any 분석, 교차검증 및 튜닝</td>
+    <td align="center">
+      <a href="https://github.com/ch3477-sudo">
+        <img src="https://img.shields.io/badge/@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">김용욱</td>
+    <td align="center">EDA, 변수 분포 분석, 기초 인사이트 정리</td>
+    <td align="center">
+      <a href="https://github.com/yonguk12077-beep">
+        <img src="https://img.shields.io/badge/@yonguk12077--beep-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">홍진서</td>
+    <td align="center">최종 요약, PPT 및 발표 자료 정리</td>
+    <td align="center">
+      <a href="https://github.com/Hong-Jin-seo">
+        <img src="https://img.shields.io/badge/@Hong--Jin--seo-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 전처리 규칙
-본 프로젝트에서는 다음 전처리 규칙을 적용하였다.
+## 기술 스택
 
-- 결측 코드 `9999`, `9998`, `9997`은 결측치로 처리
-- 문자열 내 NBSP 및 불필요한 공백 제거
-- 통신사 변수는 `{1, 2, 3, 4}`만 유효값으로 유지
-- `a03024`, `a03026`, `c02003`은 `1/2 → 1/0`으로 변환
-- `pid`, `year_t0`, `year_t1` 기준 중복 제거
-
-최종 분석용 데이터셋은 `data/processed/train_df_2020_2025.csv`로 저장한다.
-
----
-
-## 분석 흐름
-프로젝트는 다음 순서로 진행하였다.
-
-1. 프로젝트 초기 세팅 및 협업 규칙 정리
-2. KMP 원본 데이터와 코드북 구조 확인
-3. 전처리 및 transition long panel 데이터셋 구축
-4. 전처리 결과 검증
-5. EDA 및 주요 변수 분포 확인
-6. `churn_any` baseline 모델링 및 성능 비교
-7. `churn_to_mvno` baseline 모델링 및 희소 라벨 해석
-8. baseline 결과 종합 및 공통 인사이트 정리
-9. `churn_any` 교차검증 및 하이퍼파라미터 튜닝
-10. README 및 최종 발표자료 정리
-
----
-
-## 주요 결과
-- `churn_any`는 RandomForest가 가장 균형 잡힌 성능을 보였다.
-- `churn_to_mvno`는 희소 라벨 문제로 예측 난도가 높았으며, LogisticRegression과 DecisionTree가 상대적으로 실용적인 결과를 보였다.
-- 비용/지출 관련 특성과 통신 이용 특성이 두 문제에서 공통적으로 중요한 변수로 나타났다.
-
----
-
-## 팀원 역할 분담
-- 팀원 1: 데이터 전처리 및 데이터셋 구축
-- 팀원 2: EDA 및 변수 해석
-- 팀원 3: `churn_any` baseline 모델링
-- 팀원 4: `churn_to_mvno` baseline 모델링
-- 팀원 5: 전체 총괄, 결과 종합, 튜닝, README 및 발표자료 정리
-
----
-
-## GitHub 협업 방식
-- `main`: 최종 제출본
-- `dev`: 실제 팀 작업 브랜치
-
-모든 팀원은 `dev` 브랜치에서 작업하며, 각자 자신의 이름 폴더 안에서만 작업한다.  
-다른 팀원의 폴더와 작업 파일은 수정하지 않는다.  
-공용 파일은 담당자만 수정하고, 최종 제출 파일은 한 명이 취합하여 정리한다.
+<table>
+  <tr>
+    <th>분류</th>
+    <th>기술 스택</th>
+  </tr>
+  <tr>
+    <td><strong>Language</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Data Processing</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+      <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Visualization</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white"/>
+      <img src="https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logo=python&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Machine Learning</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
+      <img src="https://img.shields.io/badge/XGBoost-EC6B23?style=for-the-badge&logo=xgboost&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Environment</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Jupyter-FA0F00?style=for-the-badge&logo=jupyter&logoColor=white"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
 ## 폴더 구조
-```text
-SKN26-3M/
-├─ README.md
-├─ .gitignore
-├─ requirements.txt
-├─ data/
-│  ├─ raw/
-│  └─ processed/
-├─ notebooks/
-│  ├─ final/
-│  └─ team/
-├─ src/
-├─ docs/
-└─ outputs/
+
+```bash
+.
+├── data
+│   └── processed
+│       └── train_df_2020_2025.csv
+├── images
+│   ├── churn-any-distribution.png
+│   ├── churn-to-mvno-distribution.png
+│   ├── logistic-regression-pr-curve.png
+│   ├── telco-transition-heatmap.png
+│   ├── tuned-randomforest-feature-importance.png
+│   └── year-transition-counts.png
+├── src
+│   └── preprocess_kmp.py
+├── notebooks
+│   ├── 00_eda_overview.ipynb
+│   ├── 01_preprocessing_check.ipynb
+│   ├── 02_churn_any_baseline.ipynb
+│   ├── 03_churn_to_mvno_baseline.ipynb
+│   ├── 04_churn_any_cv_tuning.ipynb
+│   └── 05_final_summary.ipynb
+└── README.md
+```
+
+※ 원본 KMP CSV 파일은 용량 문제로 저장소에 포함하지 않았다.
+
+### 파일 설명
+- `src/preprocess_kmp.py`  
+  원천 데이터를 전처리하고 transition 기반 최종 데이터셋을 생성하는 스크립트
+
+- `data/processed/train_df_2020_2025.csv`  
+  전처리 완료 후 생성된 최종 학습용 데이터셋
+
+- `images/`  
+  README와 발표 자료에 활용한 주요 시각화 이미지
+
+- `00_eda_overview.ipynb`  
+  데이터 기본 구조 및 라벨·변수 분포 확인
+
+- `01_preprocessing_check.ipynb`  
+  전처리 결과 점검 및 전환형 구조 검증
+
+- `02_churn_any_baseline.ipynb`  
+  `churn_any` baseline 모델 비교
+
+- `03_churn_to_mvno_baseline.ipynb`  
+  `churn_to_mvno` baseline 모델 비교 및 한계 확인
+
+- `04_churn_any_cv_tuning.ipynb`  
+  `churn_any` 교차검증 및 RandomForest 튜닝
+
+- `05_final_summary.ipynb`  
+  전체 프로젝트 결과 요약 및 최종 정리
+
+---
+
+## 프로젝트 목표
+
+- KMP 원천 데이터를 기반으로 통신사 이탈 예측용 전환형 데이터셋을 구축한다.
+- `churn_any`와 `churn_to_mvno`를 분리하여 문제 구조와 난이도를 비교한다.
+- Accuracy뿐 아니라 Recall, F1, PR-AUC 중심으로 실질적인 탐지 성능을 해석한다.
+- 통신사 이탈에 영향을 줄 수 있는 비용, 이용 특성, 개인 배경 변수의 의미를 함께 확인한다.
+- 단순 성능 비교를 넘어 해석 가능한 인사이트와 데이터 한계를 함께 정리한다.
+
+---
+
+## 데이터 설명
+
+### 사용 데이터
+- 한국미디어패널(KMP) 2020~2025 개인조사 CSV (`p20 ~ p25`)
+- 코드북 `P_codebook_v32.xlsx`
+
+### 데이터 구성 방식
+원천 데이터는 `pid` 기준으로 전년(`t-1`)과 다음 해(`t`)를 연결하여 transition 기반 long panel 형태로 재구성하였다.  
+즉, 한 행은 한 개인의 `year_t0 → year_t1` 전환을 의미한다.
+
+예시
+- `2020 → 2021`
+- `2021 → 2022`
+- `2022 → 2023`
+- `2023 → 2024`
+- `2024 → 2025`
+
+최종 데이터셋은 총 `41,299행`, `17컬럼`으로 구성하였다.
+
+### 전환형 데이터 구조 확인
+전처리 이후 데이터는 단순 단면 자료가 아니라, 동일 개인의 연도 간 이동을 추적할 수 있는 전환형 구조로 구성하였다.  
+아래 그래프는 각 연도 전환 구간별 표본 수와 실제 통신사 이동 구조를 보여준다.
+
+<p align="center">
+  <img src="images/year-transition-counts.png" alt="연도 전환 구간별 건수" width="48%"/>
+  <img src="images/telco-transition-heatmap.png" alt="통신사 이동 히트맵" width="48%"/>
+</p>
+
+---
+
+## 전처리 방법
+
+전처리 파이프라인에서는 아래 기준을 적용하였다.
+
+- 결측 코드 `9999`, `9998`, `9997`를 `NaN`으로 변환
+- 문자열 공백 및 NBSP 제거
+- 통신사 변수는 유효값 `{1, 2, 3, 4}`만 유지
+- 일부 이진 변수는 `1/2 → 1/0`으로 변환
+- `pid`, `year_t0`, `year_t1` 기준 중복 제거
+- 예측 입력에는 항상 `t-1` 시점 변수만 사용
+- `telco` 관련 직접 정보는 입력 변수에서 제외하여 데이터 누수를 방지
+
+또한 기존 통신 이용 특성 변수에 더해 아래 개인 특성 변수를 추가 반영하였다.
+
+- `age1`: 나이(만 연령)
+- `income1`: 개인 월평균 소득
+- `job1`: 직업 유무
+
+이를 통해 통신 이용 특성뿐 아니라 개인의 생애주기와 경제적 배경까지 함께 반영하는 분석 구조를 구성하였다.
+
+---
+
+## 사용 변수
+
+본 프로젝트에서는 총 10개 변수군을 사용하였다.
+
+- 스마트폰 구분
+- 음성 무제한 서비스 가입 여부
+- 데이터 무제한 서비스 가입 여부
+- 월평균 휴대폰 이용 총 금액
+- 월평균 기기 할부금
+- 휴대폰 결합상품 가입 여부
+- 휴대폰 요금 부담자
+- 나이 또는 연령대
+- 개인 월평균 소득
+- 직업 유무
+
+---
+
+## 데이터 구조 및 라벨 분포
+
+EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
+
+- `churn_any`: 약 36.3%
+- `churn_to_mvno`: 약 1.25%
+
+이를 통해 다음을 확인할 수 있었다.
+
+- `churn_any`는 비교적 표본이 충분한 문제
+- `churn_to_mvno`는 매우 희소한 이벤트로 클래스 불균형이 큰 문제
+- 따라서 두 문제는 같은 기준으로 해석하면 안 되며, 서로 다른 평가 관점이 필요하다
+
+두 라벨의 분포 차이는 아래 그림에서 직관적으로 확인할 수 있다.
+
+<p align="center">
+  <img src="images/churn-any-distribution.png" alt="churn_any 분포" width="48%"/>
+  <img src="images/churn-to-mvno-distribution.png" alt="churn_to_mvno 분포" width="48%"/>
+</p>
+
+---
+
+## 분석 흐름
+
+### 1. `00_eda_overview.ipynb`
+- 데이터 기본 구조 확인
+- 라벨 분포 확인
+- 주요 변수 분포 및 기초 관계 확인
+
+### 2. `01_preprocessing_check.ipynb`
+- 전처리 결과 점검
+- 전환형 구조 확인
+- 추가 변수(`age1`, `income1`, `job1`) 반영 여부 검증
+
+### 3. `02_churn_any_baseline.ipynb`
+- `churn_any` 단일 hold-out baseline 모델 비교
+
+### 4. `03_churn_to_mvno_baseline.ipynb`
+- `churn_to_mvno` baseline 모델 비교
+- threshold 조정 및 불균형 대응 기법 확인
+
+### 5. `04_churn_any_cv_tuning.ipynb`
+- `GroupKFold` 기반 `churn_any` 교차검증
+- `RandomForest` 하이퍼파라미터 튜닝
+- threshold 비교 및 해석
+
+### 6. `05_final_summary.ipynb`
+- 전체 프로젝트 결과 요약
+- 문제별 핵심 결론 및 한계 정리
+
+---
+
+## 주요 결과
+
+### 1. churn_any 분석 결과
+`churn_any`는 일반적인 통신사 변경 여부를 예측하는 문제로, hold-out baseline 비교와 GroupKFold 기반 교차검증·튜닝을 함께 진행하였다.
+
+- hold-out baseline에서는 `DecisionTree`가 가장 강한 탐지형 성능을 보였다.
+- GroupKFold 기준 baseline에서도 `DecisionTree`가 가장 높은 Recall과 F1을 보였다.
+- 튜닝 이후에는 `RandomForest`가 보다 실사용에 가까운 최종 후보 모델로 정리되었다.
+
+또한 튜닝된 RandomForest의 변수 중요도를 확인했을 때, 스마트폰 구분, 월평균 휴대폰 이용 총 금액, 월평균 기기 할부금, 개인 월평균 소득, 연령대 등이 핵심 예측 신호로 나타났다.
+
+<p align="center">
+  <img src="images/tuned-randomforest-feature-importance.png" alt="튜닝된 랜덤포레스트 중요 변수" width="80%"/>
+</p>
+
+### 2. churn_to_mvno 분석 결과
+`churn_to_mvno`는 전체 데이터 기준 양성 비율이 약 1.25%에 불과한 매우 희소한 문제였다.
+
+- 가장 안정적인 baseline은 `LogisticRegression`이었다.
+- `DecisionTree`는 탐지형 대안으로 해석할 수 있었다.
+- threshold 조정만으로는 성능 한계가 분명했다.
+- 희소 클래스와 변수 정보 한계가 동시에 존재하는 문제임을 확인하였다.
+
+특히 Precision-Recall Curve를 보면, 양성 클래스가 매우 희소한 구조에서 정밀도와 재현율을 동시에 안정적으로 확보하기 어렵다는 점을 확인할 수 있다.
+
+<p align="center">
+  <img src="images/logistic-regression-pr-curve.png" alt="Precision-Recall Curve - LogisticRegression" width="80%"/>
+</p>
+
+---
+
+## 공통 인사이트
+
+두 문제를 함께 보면 공통적으로 비용 및 이용 특성이 중요한 축으로 작용하였다.  
+특히 아래 변수들이 반복적으로 중요한 신호로 나타났다.
+
+- 스마트폰 구분
+- 월평균 휴대폰 이용 총 금액
+- 월평균 기기 할부금
+- 나이/연령대
+- 개인 월평균 소득
+
+즉 고객 이탈은 단순한 통신 이용 행태만으로 설명되지 않고,  
+비용 관련 변수, 단말 및 이용 특성, 개인 배경 특성이 함께 작용하는 문제임을 확인할 수 있었다.
+
+---
+
+## 한계 및 향후 개선 방향
+
+첫째, 현재 변수 구조는 핵심 변수 중심의 제한된 구성이다. 실제 통신사 데이터에 포함될 수 있는 약정 만료 정보, 단말기 교체 주기, 최근 사용량 변화, 고객센터 접촉 이력, 프로모션 반응 이력 등은 반영하지 못했다.
+
+둘째, `churn_to_mvno`는 양성 비율이 약 1.25%에 불과한 매우 희소한 문제이므로, 현재 구조만으로는 예측 성능에 명확한 한계가 있다.
+
+셋째, 현재 분석은 `t-1` 시점의 정적 변수 중심이기 때문에, 시간에 따른 변화량이나 행동 추세를 충분히 반영하지 못한다.
+
+---
+
+## 최종 결론
+
+이번 프로젝트에서는 통신사 고객 이탈을 `churn_any`와 `churn_to_mvno`로 나누어 분석하였다.
+
+`churn_any`는 상대적으로 표본이 충분한 문제였으며, baseline 비교와 RandomForest 튜닝을 통해 실제 활용 가능한 수준의 예측 성능과 해석 가능한 주요 변수군을 확인할 수 있었다.  
+특히 비용 및 이용 특성에 더해 나이/연령대와 소득 같은 개인 배경 변수를 반영함으로써, 이탈 현상을 더 현실적으로 해석할 수 있었다.
+
+반면 `churn_to_mvno`는 매우 희소한 문제로, 단순한 baseline과 threshold 조정만으로는 실질적인 성능 개선에 한계가 있었다.  
+따라서 이 문제는 성능 자체보다도 데이터 구조와 희소 클래스의 한계를 이해하고, 향후 불균형 특화 기법과 추가 변수 도입 필요성을 확인했다는 점에서 의미가 있다.
+
+즉 이번 프로젝트의 핵심 성과는 단순히 모델 점수를 비교하는 데 그치지 않고,  
+통신사 이탈을 비용 관련 변수, 이용 특성, 개인 배경이 함께 작동하는 문제로 해석할 수 있는 분석 흐름을 정리했다는 데 있다.
+
+---
+
+## 프로젝트 팀원 회고
+
+본 프로젝트 수행 과정에서 팀원 간 협업 경험과 기여도를 상호 평가하기 위해 회고를 기록한다.  
+평가 내용은 자유롭게 작성하며, 프로젝트 기여·협업·문제해결·리더십 등을 중심으로 기술한다.
+
+---
+
+### 김용욱 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 윤찬호 |  |
+| 전승권 |  |
+| 홍완기 |  |
+| 홍진서 |  |
+
+---
+
+### 윤찬호 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 김용욱 |  |
+| 전승권 |  |
+| 홍완기 |  |
+| 홍진서 |  |
+
+---
+
+### 전승권 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 김용욱 |  |
+| 윤찬호 |  |
+| 홍완기 |  |
+| 홍진서 |  |
+
+---
+
+### 홍완기 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 김용욱 |  |
+| 윤찬호 |  |
+| 전승권 |  |
+| 홍진서 |  |
+
+---
+
+### 홍진서 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 김용욱 |  |
+| 윤찬호 |  |
+| 전승권 |  |
+| 홍완기 |  |
+
+---

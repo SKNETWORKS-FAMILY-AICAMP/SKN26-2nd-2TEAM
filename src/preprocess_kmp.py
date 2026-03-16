@@ -11,10 +11,17 @@ pd.set_option("display.width", 200)
 # --------------------------------------------------
 # 1. 폴더 경로 설정
 # --------------------------------------------------
-base_dir = os.getcwd()
+current_file_dir = os.path.dirname(os.path.abspath(__file__))
+base_dir = os.path.dirname(current_file_dir)
+
 raw_dir = os.path.join(base_dir, "data", "raw")
 processed_dir = os.path.join(base_dir, "data", "processed")
 os.makedirs(processed_dir, exist_ok=True)
+
+print("current_file_dir:", current_file_dir)
+print("base_dir:", base_dir)
+print("raw_dir:", raw_dir)
+print("processed_dir:", processed_dir)
 
 # --------------------------------------------------
 # 2. 연도별 파일명 정의
@@ -32,13 +39,16 @@ file_map = {
 # 3. 사용할 feature 변수 정의
 # --------------------------------------------------
 feature_vars = [
-    "a03002",  # 스마트폰 구분
-    "a03024",  # 음성 무제한 서비스 가입 여부
-    "a03026",  # 데이터 무제한 서비스 가입 여부
-    "c01002",  # 월평균 휴대폰 이용 총 금액(리코드)
-    "c01004",  # 월평균 기기 할부금(리코드)
-    "c02003",  # 휴대폰 결합상품 가입 여부
-    "c02001",  # 휴대폰 요금 부담자
+    "a03002",   # 스마트폰 구분
+    "a03024",   # 음성 무제한 서비스 가입 여부
+    "a03026",   # 데이터 무제한 서비스 가입 여부
+    "c01002",   # 월평균 휴대폰 이용 총 금액(리코드)
+    "c01004",   # 월평균 기기 할부금(리코드)
+    "c02003",   # 휴대폰 결합상품 가입 여부
+    "c02001",   # 휴대폰 요금 부담자
+    "age1",     # 나이(만 연령)
+    "income1",  # 개인 월평균 소득(연속형)
+    "job1",     # 직업 유무
 ]
 
 missing_codes = [9999, 9998, 9997]
@@ -150,6 +160,9 @@ for year, file_name in file_map.items():
     if "c02003_tminus1" in df.columns:
         df["c02003_tminus1"] = df["c02003_tminus1"].map({1: 1, 2: 0})
 
+    if "job1_tminus1" in df.columns:
+        df["job1_tminus1"] = df["job1_tminus1"].map({1: 1, 2: 0})
+
     # 연도 정보 추가
     df["year"] = year
 
@@ -238,6 +251,9 @@ final_cols = [
     "c01004_tminus1",
     "c02003_tminus1",
     "c02001_tminus1",
+    "age1_tminus1",
+    "income1_tminus1",
+    "job1_tminus1",
 ]
 
 final_cols = [col for col in final_cols if col in train_df.columns]
@@ -265,6 +281,10 @@ print(train_df["churn_to_mvno"].value_counts(dropna=False).sort_index())
 
 print("\n컬럼별 결측률")
 print(train_df.isna().mean().sort_values(ascending=False))
+
+print("\n추가 컬럼 기초통계")
+extra_cols = [col for col in ["age1_tminus1", "income1_tminus1", "job1_tminus1"] if col in train_df.columns]
+print(train_df[extra_cols].describe(include="all"))
 
 print("\n상위 5행")
 print(train_df.head())
