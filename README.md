@@ -15,19 +15,102 @@
 
 ## 팀 소개
 
-| 팀원 1 | 팀원 2 | 팀원 3 | 팀원 4 | 팀원 5 |
-|--------|--------|--------|--------|--------|
-| 이름: 김용욱<br>GitHub ID:<br>[@yonguk12077-beep](https://github.com/yonguk12077-beep) | 이름: 윤찬호<br>GitHub ID:<br>[@dhksrlghd](https://github.com/dhksrlghd) | 이름: 전승권<br>GitHub ID:<br>[@ch3477-sudo](https://github.com/ch3477-sudo) | 이름: 홍완기<br>GitHub ID:<br>[@yonguk12077-beep](https://github.com/yonguk12077-beep) | 이름: 홍진서<br>GitHub ID:<br>[@ch3477-sudo](https://github.com/ch3477-sudo) |
+<table>
+  <tr>
+    <th align="center">이름</th>
+    <th align="center">역할</th>
+    <th align="center">GitHub</th>
+  </tr>
+  <tr>
+    <td align="center">윤찬호</td>
+    <td align="center">전처리, 전환형 데이터셋 구축, 분석 흐름 정리 총괄, README 정리</td>
+    <td align="center">
+      <a href="https://github.com/ch3477-sudo">
+        <img src="https://img.shields.io/badge/@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">홍완기</td>
+    <td align="center">churn_to_mvno 분석, threshold 비교, 희소 라벨 한계 해석</td>
+    <td align="center">
+      <a href="https://github.com/dhksrlghd">
+        <img src="https://img.shields.io/badge/@dhksrlghd-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">전승권</td>
+    <td align="center">churn_any 분석, 교차검증 및 튜닝</td>
+    <td align="center">
+      <a href="https://github.com/eaent">
+        <img src="https://img.shields.io/badge/@eaent-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">김용욱</td>
+    <td align="center">EDA, 변수 분포 분석, 기초 인사이트 정리</td>
+    <td align="center">
+      <a href="https://github.com/yonguk12077-beep">
+        <img src="https://img.shields.io/badge/@yonguk12077--beep-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">홍진서</td>
+    <td align="center">최종 요약, PPT 및 발표 자료 정리</td>
+    <td align="center">
+      <a href="https://github.com/Hong-Jin-seo">
+        <img src="https://img.shields.io/badge/@Hong--Jin--seo-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
 ## 기술 스택
 
-- Language: Python
-- Data Processing: Pandas, NumPy
-- Visualization: Matplotlib, Seaborn
-- Machine Learning: Scikit-learn, XGBoost
-- Environment: Jupyter Notebook
+<table>
+  <tr>
+    <th>분류</th>
+    <th>기술 스택</th>
+  </tr>
+  <tr>
+    <td><strong>Language</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Data Processing</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+      <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Visualization</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white"/>
+      <img src="https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logo=python&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Machine Learning</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
+      <img src="https://img.shields.io/badge/XGBoost-EC6B23?style=for-the-badge&logo=xgboost&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Environment</strong></td>
+    <td>
+      <img src="https://img.shields.io/badge/Jupyter-FA0F00?style=for-the-badge&logo=jupyter&logoColor=white"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -39,12 +122,12 @@
 │   └── processed
 │       └── train_df_2020_2025.csv
 ├── images
-│   ├── i1.png
-│   ├── i2.png
-│   ├── i3.png
-│   ├── i4.png
-│   ├── i5.png
-│   └── i6.png
+│   ├── churn-any-distribution.png
+│   ├── churn-to-mvno-distribution.png
+│   ├── logistic-regression-pr-curve.png
+│   ├── telco-transition-heatmap.png
+│   ├── tuned-randomforest-feature-importance.png
+│   └── year-transition-counts.png
 ├── src
 │   └── preprocess_kmp.py
 ├── notebooks
@@ -123,8 +206,8 @@
 아래 그래프는 각 연도 전환 구간별 표본 수와 실제 통신사 이동 구조를 보여준다.
 
 <p align="center">
-  <img src="images/i3.png" alt="연도 전환 구간별 건수" width="48%"/>
-  <img src="images/i4.png" alt="통신사 이동 히트맵" width="48%"/>
+  <img src="images/year-transition-counts.png" alt="연도 전환 구간별 건수" width="48%"/>
+  <img src="images/telco-transition-heatmap.png" alt="통신사 이동 히트맵" width="48%"/>
 </p>
 
 ---
@@ -184,8 +267,8 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 두 라벨의 분포 차이는 아래 그림에서 직관적으로 확인할 수 있다.
 
 <p align="center">
-  <img src="images/i1.png" alt="churn_any 분포" width="48%"/>
-  <img src="images/i2.png" alt="churn_to_mvno 분포" width="48%"/>
+  <img src="images/churn-any-distribution.png" alt="churn_any 분포" width="48%"/>
+  <img src="images/churn-to-mvno-distribution.png" alt="churn_to_mvno 분포" width="48%"/>
 </p>
 
 ---
@@ -232,7 +315,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 또한 튜닝된 RandomForest의 변수 중요도를 확인했을 때, 스마트폰 구분, 월평균 휴대폰 이용 총 금액, 월평균 기기 할부금, 개인 월평균 소득, 연령대 등이 핵심 예측 신호로 나타났다.
 
 <p align="center">
-  <img src="images/i5.png" alt="튜닝된 랜덤포레스트 중요 변수" width="80%"/>
+  <img src="images/tuned-randomforest-feature-importance.png" alt="튜닝된 랜덤포레스트 중요 변수" width="80%"/>
 </p>
 
 ### 2. churn_to_mvno 분석 결과
@@ -246,7 +329,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 특히 Precision-Recall Curve를 보면, 양성 클래스가 매우 희소한 구조에서 정밀도와 재현율을 동시에 안정적으로 확보하기 어렵다는 점을 확인할 수 있다.
 
 <p align="center">
-  <img src="images/i6.png" alt="Precision-Recall Curve - LogisticRegression" width="80%"/>
+  <img src="images/logistic-regression-pr-curve.png" alt="Precision-Recall Curve - LogisticRegression" width="80%"/>
 </p>
 
 ---
@@ -289,3 +372,67 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 
 즉 이번 프로젝트의 핵심 성과는 단순히 모델 점수를 비교하는 데 그치지 않고,  
 통신사 이탈을 비용 관련 변수, 이용 특성, 개인 배경이 함께 작동하는 문제로 해석할 수 있는 분석 흐름을 정리했다는 데 있다.
+
+---
+
+## 프로젝트 팀원 회고
+
+본 프로젝트 수행 과정에서 팀원 간 협업 경험과 기여도를 상호 평가하기 위해 회고를 기록한다.  
+평가 내용은 자유롭게 작성하며, 프로젝트 기여·협업·문제해결·리더십 등을 중심으로 기술한다.
+
+---
+
+### 김용욱 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 윤찬호 |  |
+| 전승권 |  |
+| 홍완기 |  |
+| 홍진서 |  |
+
+---
+
+### 윤찬호 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 김용욱 |  |
+| 전승권 |  |
+| 홍완기 |  |
+| 홍진서 |  |
+
+---
+
+### 전승권 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 김용욱 |  |
+| 윤찬호 |  |
+| 홍완기 |  |
+| 홍진서 |  |
+
+---
+
+### 홍완기 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 김용욱 |  |
+| 윤찬호 |  |
+| 전승권 |  |
+| 홍진서 |  |
+
+---
+
+### 홍진서 회고
+
+| 평가자 | 회고 내용 |
+|--------|-----------|
+| 김용욱 |  |
+| 윤찬호 |  |
+| 전승권 |  |
+| 홍완기 |  |
+
+---
