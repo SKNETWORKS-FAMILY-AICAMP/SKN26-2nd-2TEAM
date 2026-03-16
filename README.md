@@ -15,9 +15,52 @@
 
 ## 팀 소개
 
-| 팀원 1 | 팀원 2 | 팀원 3 | 팀원 4 | 팀원 5 |
-|--------|--------|--------|--------|--------|
-| 이름: 김용욱<br>GitHub ID:<br>[@yonguk12077-beep](https://github.com/yonguk12077-beep) | 이름: 윤찬호<br>GitHub ID:<br>[@ch3477-sudo](https://github.com/ch3477-sudo) | 이름: 전승권<br>GitHub ID:<br>[@eaent](https://github.com/eaent) | 이름: 홍완기<br>GitHub ID:<br>[@dhksrlghd](https://github.com/dhksrlghd) | 이름: 홍진서<br>GitHub ID:<br>[@Hong-Jin-seo](https://github.com/Hong-Jin-seo) |
+<table>
+  <tr>
+    <th width="20%">팀원 1</th>
+    <th width="20%">팀원 2</th>
+    <th width="20%">팀원 3</th>
+    <th width="20%">팀원 4</th>
+    <th width="20%">팀원 5</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>윤찬호</strong><br><br>
+      <img src="https://img.shields.io/badge/Role-Preprocessing%20%26%20Tuning-4C72B0?style=flat-square"/><br><br>
+      <a href="https://github.com/ch3477-sudo">
+        <img src="https://img.shields.io/badge/GitHub-@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+    <td align="center">
+      <strong>홍완기</strong><br><br>
+      <img src="https://img.shields.io/badge/Role-EDA%20%26%20Insight-4C72B0?style=flat-square"/><br><br>
+      <a href="https://github.com/dhksrlghd">
+        <img src="https://img.shields.io/badge/GitHub-@dhksrlghd-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+    <td align="center">
+      <strong>홍진서</strong><br><br>
+      <img src="https://img.shields.io/badge/Role-churn__any%20Baseline-4C72B0?style=flat-square"/><br><br>
+      <a href="https://github.com/ch3477-sudo">
+        <img src="https://img.shields.io/badge/GitHub-@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+    <td align="center">
+      <strong>김용욱</strong><br><br>
+      <img src="https://img.shields.io/badge/Role-churn__to__mvno%20Analysis-4C72B0?style=flat-square"/><br><br>
+      <a href="https://github.com/yonguk12077-beep">
+        <img src="https://img.shields.io/badge/GitHub-@yonguk12077--beep-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+    <td align="center">
+      <strong>전승권</strong><br><br>
+      <img src="https://img.shields.io/badge/Role-Final%20Summary%20%26%20Presentation-4C72B0?style=flat-square"/><br><br>
+      <a href="https://github.com/ch3477-sudo">
+        <img src="https://img.shields.io/badge/GitHub-@ch3477--sudo-181717?style=flat-square&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
