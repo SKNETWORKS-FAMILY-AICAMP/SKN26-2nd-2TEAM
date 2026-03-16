@@ -209,8 +209,11 @@
 아래 그래프는 각 연도 전환 구간별 표본 수와 실제 통신사 이동 구조를 보여준다.
 
 <p align="center">
-  <img src="images/year-transition-counts.png" alt="연도 전환 구간별 건수" width="48%"/>
-  <img src="images/telco-transition-heatmap.png" alt="통신사 이동 히트맵" width="48%"/>
+  <img src="images/year-transition-counts.png" alt="연도 전환 구간별 건수" width="80%"/>
+</p>
+
+<p align="center">
+  <img src="images/telco-transition-heatmap.png" alt="통신사 이동 히트맵" width="80%"/>
 </p>
 
 ---
