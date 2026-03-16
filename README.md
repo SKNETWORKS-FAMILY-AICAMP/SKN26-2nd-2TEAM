@@ -404,7 +404,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
   </tr>
   <tr>
     <td align="center"><nobr>전승권</nobr></td>
-    <td>EDA와 데이터 전처리를 담당하며 분석 기반을 마련해주셨습니다.</td>
+    <td>EDA를 담당하며 초기 단계 주요변수 구조 분석 기반을 마련해주셨습니다.</td>
   </tr>
   <tr>
     <td align="center"><nobr>홍완기</nobr></td>
