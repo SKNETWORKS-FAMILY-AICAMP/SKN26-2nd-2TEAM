@@ -17,7 +17,7 @@
 
 | 팀원 1 | 팀원 2 | 팀원 3 | 팀원 4 | 팀원 5 |
 |--------|--------|--------|--------|--------|
-| 이름: 윤찬호<br>GitHub ID: [@ch3477-sudo](https://github.com/ch3477-sudo) | 이름: 홍완기<br>GitHub ID: @dhksrlghd | 이름: 홍진서<br>GitHub ID: `member3` | 이름: 김용욱<br>GitHub ID: `member4` | 이름: 전승권<br>GitHub ID: `member5` |
+| 이름: 윤찬호<br>GitHub ID:<br>[@ch3477-sudo](https://github.com/ch3477-sudo) | 이름: 홍완기<br>GitHub ID: @dhksrlghd | 이름: 홍진서<br>GitHub ID: `member3` | 이름: 김용욱<br>GitHub ID: `member4` | 이름: 전승권<br>GitHub ID: `member5` |
 
 ---
 
