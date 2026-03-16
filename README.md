@@ -432,7 +432,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
   </tr>
   <tr>
     <td align="center"><nobr>전승권</nobr></td>
-    <td>프로젝트의 기초 틀을 만들고 노션 기반 정리를 담당해주셨습니다.</td>
+    <td>프로젝트의 기초 틀을 만들고 초기 데이터 전처리 를 담당해주셨습니다.</td>
   </tr>
   <tr>
     <td align="center"><nobr>홍완기</nobr></td>
