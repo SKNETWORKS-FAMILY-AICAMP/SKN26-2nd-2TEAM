@@ -502,7 +502,7 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
   </tr>
   <tr>
     <td align="center"><nobr>전승권</nobr></td>
-    <td>프로젝트 전반을 주도하고 일정 조율을 맡은 PM 역할을 수행해주셨습니다.</td>
+    <td>프로젝트 전반을 주도하고 일정 조율을 맡은 PM 역할을 노션을 통해 원활히 수행해주셨습니다.</td>
   </tr>
   <tr>
     <td align="center"><nobr>홍진서</nobr></td>
