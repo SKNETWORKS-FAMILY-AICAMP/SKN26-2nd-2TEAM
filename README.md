@@ -128,8 +128,6 @@
 │   ├── telco-transition-heatmap.png
 │   ├── tuned-randomforest-feature-importance.png
 │   └── year-transition-counts.png
-├── src
-│   └── preprocess_kmp.py
 ├── notebooks
 │   ├── 00_eda_overview.ipynb
 │   ├── 01_preprocessing_check.ipynb
@@ -137,7 +135,12 @@
 │   ├── 03_churn_to_mvno_baseline.ipynb
 │   ├── 04_churn_any_cv_tuning.ipynb
 │   └── 05_final_summary.ipynb
-└── README.md
+├── src
+│   └── preprocess_kmp.py
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ※ 원본 KMP CSV 파일은 용량 문제로 저장소에 포함하지 않았다.
@@ -206,8 +209,11 @@
 아래 그래프는 각 연도 전환 구간별 표본 수와 실제 통신사 이동 구조를 보여준다.
 
 <p align="center">
-  <img src="images/year-transition-counts.png" alt="연도 전환 구간별 건수" width="48%"/>
-  <img src="images/telco-transition-heatmap.png" alt="통신사 이동 히트맵" width="48%"/>
+  <img src="images/year-transition-counts.png" alt="연도 전환 구간별 건수" width="80%"/>
+</p>
+
+<p align="center">
+  <img src="images/telco-transition-heatmap.png" alt="통신사 이동 히트맵" width="80%"/>
 </p>
 
 ---
@@ -384,55 +390,159 @@ EDA 및 전처리 점검 결과, 라벨 분포는 다음과 같았다.
 
 ### 김용욱 회고
 
-| 평가자 | 회고 내용 |
-|--------|-----------|
-| 윤찬호 |  |
-| 전승권 |  |
-| 홍완기 |  |
-| 홍진서 |  |
+<table>
+  <tr>
+    <th align="center" width="90">평가자</th>
+    <th align="center">회고 내용</th>
+  </tr>
+  <tr>
+    <td align="center"><nobr>윤찬호</nobr></td>
+    <td>
+      EDA와 변수 분포 분석을 통해 데이터의 전체 흐름을 이해하는 데 큰 도움을 주셨습니다.<br>
+      초기 단계에서 주요 변수와 구조를 잘 정리해주셔서 이후 모델 결과를 해석하는 기반이 되었습니다.
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>전승권</nobr></td>
+    <td>EDA를 담당하며 초기 단계 주요변수 구조 분석 기반을 마련해주셨습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>홍완기</nobr></td>
+    <td>방대한 데이터의 기초 분포와 특징을 파악하는 EDA를 전담하며, 숨겨진 의미를 찾는데 도움을 주셨습니다.<br>
+    성공적인 모델링을 위한 든든한 토대를 마련하고 전체 프로젝트의 첫 단추를 성공적으로 꿰게되어 의미 있는 시간이였습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>홍진서</nobr></td>
+    <td>EDA에서 팀이 확인해야 할 부분을 시각화로 잘 해주어 추후 모델링을 할 때 큰 도움이 되었습니다.</td>
+  </tr>
+</table>
 
 ---
 
 ### 윤찬호 회고
 
-| 평가자 | 회고 내용 |
-|--------|-----------|
-| 김용욱 |  |
-| 전승권 |  |
-| 홍완기 |  |
-| 홍진서 |  |
+<table>
+  <tr>
+    <th align="center" width="90">평가자</th>
+    <th align="center">회고 내용</th>
+  </tr>
+  <tr>
+    <td align="center"><nobr>김용욱</nobr></td>
+    <td>프로젝트 간의 기본 틀을 잡아주면서 깃허브와 자료 정리 기반을 정리해주면서 팀원들이 무엇을 해나갸야하는지 잘 이끌어주셨습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>전승권</nobr></td>
+    <td>프로젝트의 기초 틀을 만들고 초기 데이터 전처리 를 담당해주셨습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>홍완기</nobr></td>
+    <td>
+      분석 파이프라인의 전 과정을 직접 구축하며 데이터의 흐름을 꿰뚫어 보는 시야와 실무적인 문제 해결 역량을 기를 수 있었습니다. <br>
+      프로젝트의 기초부터 마무리까지 주도적으로 완주하며, 실무적인 문제 해결 능력과 큰 자신감을 보여주셔서 좋았습니다.
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>홍진서</nobr></td>
+    <td>프로젝트의 전체적인 틀을 주도하였고 좋은 피드백과 팀이 다음 스텝을 가야할 때 적절한 방향을 주어 뜻깊은 마무리를 할 수 있었습니다.</td>
+  </tr>
+</table>
 
 ---
 
 ### 전승권 회고
 
-| 평가자 | 회고 내용 |
-|--------|-----------|
-| 김용욱 |  |
-| 윤찬호 |  |
-| 홍완기 |  |
-| 홍진서 |  |
+<table>
+  <tr>
+    <th align="center" width="90">평가자</th>
+    <th align="center">회고 내용</th>
+  </tr>
+  <tr>
+    <td align="center"><nobr>김용욱</nobr></td>
+    <td>분석과 교차 검증, 튜닝을 맡아 주시면서 프로젝트에서 쓰이는 모델을 보기 싶게 정리해주셨습니다 그 외에도 지속적으로 탐구하면서
+      좀 더 안정적인 결과값을 잘 이끌어내주셨습니다..</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>윤찬호</nobr></td>
+    <td>
+      churn_any 모델링과 튜닝을 맡아 진행해주셨습니다. <br>
+      결과 비교에 그치지 않고 안정성과 활용 가능성까지 함께 보여주셨습니다.
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>홍완기</nobr></td>
+    <td>극심한 불균형 데이터를 다루며 현업의 문제를 직접 경험해 볼 수 있어 유익했습니다. <br>
+      핵심 인사이트 도출부터 최종 요약까지 분석 전체 사이클을 성공적으로 완주해 뜻깊었습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>홍진서</nobr></td>
+    <td>적절한 모델링과 분석, 검증 절차를 거쳐 유의미한 결과를 도출할 수 있게 해주었습니다.</td>
+  </tr>
+</table>
 
 ---
 
 ### 홍완기 회고
 
-| 평가자 | 회고 내용 |
-|--------|-----------|
-| 김용욱 |  |
-| 윤찬호 |  |
-| 전승권 |  |
-| 홍진서 |  |
+<table>
+  <tr>
+    <th align="center" width="90">평가자</th>
+    <th align="center">회고 내용</th>
+  </tr>
+  <tr>
+    <td align="center"><nobr>김용욱</nobr></td>
+    <td>희소 라벨인 churn_to_mvno 문제를 맡아 threshold 비교와 한계 해석까지 잘 정리해주셨습니다.
+        이에 그치지 않고 왜 예측이 어려운지도 함께 설명해주셔서 해석의 신뢰도를 높여주셨습니다. 진행 간에도 상시적으로 점검하면서 순조롭게 이끌어나가주셨습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>윤찬호</nobr></td>
+    <td>
+      churn_to_mvno 모델링을 맡아서 꼼꼼하게 정리해주셨습니다.<br>
+      노션 정리와 일정 관리를 같이 진행해주셔서 프로젝트 진행의 윤활유 같은 역할을 해주셨습니다.
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>전승권</nobr></td>
+    <td>프로젝트 전반을 주도하고 일정 조율을 맡은 PM 역할을 노션을 통해 원활히 수행해주셨습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>홍진서</nobr></td>
+    <td>가장 문제가 많은 부분을 맡아 끝까지 포기하지 않고, 유의미한 결과를 도출하기까지 많은 노력을 해주었습니다.<br>
+        팀을 잘 이끌어 누구 하나 빠지지 않게 해주었습니다.</td>
+  </tr>
+</table>
 
 ---
 
 ### 홍진서 회고
 
-| 평가자 | 회고 내용 |
-|--------|-----------|
-| 김용욱 |  |
-| 윤찬호 |  |
-| 전승권 |  |
-| 홍완기 |  |
+<table>
+  <tr>
+    <th align="center" width="90">평가자</th>
+    <th align="center">회고 내용</th>
+  </tr>
+  <tr>
+    <td align="center"><nobr>김용욱</nobr></td>
+    <td>프로젝트에서 나온 내용을 잘 요약해서 발표할 때 사람들이 잘 알아볼 수 있게 시각자료로 잘 정리해서 만들어주셨습니다. 
+      이로부터 팀원이나 듣는 이한테 전달력이 좋은 결과물을 보여줄 수 있었습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>윤찬호</nobr></td>
+    <td>
+      최종 요약과 PPT 정리를 맡아 각자 진행한 분석 결과를 하나의 흐름으로 잘 연결해주셨습니다.<br>
+      덕분에 프로젝트 결과가 더 명확하고 전달력 있게 정리될 수 있었습니다.
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>전승권</nobr></td>
+    <td>발표자료와 PPT를 체계적으로 정리하고 회의를 주도해주셨습니다.</td>
+  </tr>
+  <tr>
+    <td align="center"><nobr>홍완기</nobr></td>
+    <td>
+      분석 전 과정을 주도적으로 이끌며 팀원들의 결과물을 하나의 유기적인 흐름으로 엮어내 프로젝트의 마침표를 완벽히 찍어주셨습니다. <br>
+      복잡한 지표를 PPT로 명확히 요약해 전달력을 높여주셨고, 책임감 있는 태도로 팀의 최종 결과물을 성공적으로 완성해 주셨습니다.
+    </td>
+  </tr>
+</table>
 
 ---
